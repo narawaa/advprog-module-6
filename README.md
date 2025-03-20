@@ -19,3 +19,9 @@ Secara sederhana, method ini membaca dan mencetak permintaan HTTP yang masuk ke 
 ![Commit 2 screen capture](/assets/images/commit2.png)
 
 Dengan kode baru di handle_connection, server dapat membaca permintaan HTTP dari klien dan mengirimkan respons yang lebih lengkap. Pertama, permintaan yang masuk diproses menggunakan BufReader dan disimpan hingga menemukan baris kosong, menandakan akhir dari header HTTP. Setelah itu, server membaca isi file hello.html, menghitung panjangnya, dan menyusun respons HTTP yang berisi status "200 OK", header Content-Length, serta isi halaman. Respons ini kemudian dikirim ke klien menggunakan stream.write_all() sehingga ketika pengguna mengakses server, mereka mendapatkan halaman HTML yang telah disiapkan.
+
+### Reflection 3: Milestone 3
+
+![Commit 3 screen capture](/assets/images/commit3.png)
+
+Dengan kode baru setelah refactoring, pemisahan antara respons untuk halaman utama dan halaman 404 menjadi lebih rapi dan efisien. Sebelumnya, ada dua blok kode yang hampir sama untuk menangani respons "200 OK" dan "404 NOT FOUND", yang membuat kode lebih panjang dan sulit dikelola. Setelah refactoring, pemilihan status dan file dilakukan dalam satu blok dengan menggunakan if request_line == "GET / HTTP/1.1" sehingga mengurangi duplikasi. Ini membuat kode lebih ringkas, mudah dibaca, dan lebih fleksibel.

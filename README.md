@@ -25,3 +25,7 @@ Dengan kode baru di handle_connection, server dapat membaca permintaan HTTP dari
 ![Commit 3 screen capture](/assets/images/commit3.png)
 
 Dengan kode baru setelah refactoring, pemisahan antara respons untuk halaman utama dan halaman 404 menjadi lebih rapi dan efisien. Sebelumnya, ada dua blok kode yang hampir sama untuk menangani respons "200 OK" dan "404 NOT FOUND", yang membuat kode lebih panjang dan sulit dikelola. Setelah refactoring, pemilihan status dan file dilakukan dalam satu blok dengan menggunakan if request_line == "GET / HTTP/1.1" sehingga mengurangi duplikasi. Ini membuat kode lebih ringkas, mudah dibaca, dan lebih fleksibel.
+
+### Reflection 4: Milestone 4
+
+Saat mengakses 127.0.0.1/sleep, server menunggu 5 detik sebelum merespons karena thread::sleep(). Jika membuka dua browser dan mencoba /sleep di satu serta / di lainnya, permintaan kedua akan tertunda. Ini menunjukkan bahwa server menangani permintaan secara berurutan (blocking), yang bisa menyebabkan keterlambatan jika banyak pengguna mengaksesnya sekaligus.

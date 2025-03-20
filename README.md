@@ -29,3 +29,7 @@ Dengan kode baru setelah refactoring, pemisahan antara respons untuk halaman uta
 ### Reflection 4: Milestone 4
 
 Saat mengakses 127.0.0.1/sleep, server menunggu 5 detik sebelum merespons karena thread::sleep(). Jika membuka dua browser dan mencoba /sleep di satu serta / di lainnya, permintaan kedua akan tertunda. Ini menunjukkan bahwa server menangani permintaan secara berurutan (blocking), yang bisa menyebabkan keterlambatan jika banyak pengguna mengaksesnya sekaligus.
+
+### Reflection 5: Milestone 5
+
+ThreadPool bekerja dengan membuat sejumlah thread worker yang siap menangani tugas. Saat ada tugas baru, tugas tersebut dikirim melalui channel ke salah satu worker yang tersedia. Worker mengambil tugas, menjalankannya, lalu kembali siap menerima tugas berikutnya. Jika ThreadPool dihentikan, semua worker akan menyelesaikan tugas yang tersisa sebelum ditutup. Ini membantu menjalankan banyak tugas secara paralel tanpa harus membuat thread baru setiap kali ada tugas.

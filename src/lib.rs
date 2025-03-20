@@ -11,8 +11,12 @@ pub struct ThreadPool {
 type Job = Box<dyn FnOnce() + Send + 'static>;
 
 impl ThreadPool {
-    pub fn new(size: usize) -> ThreadPool {
-        assert!(size > 0);
+    pub fn build(size: usize) -> ThreadPool {
+        if size == 0 {
+            panic!("ThreadPool size must be greater than zero");
+        }
+
+        println!("Building a ThreadPool with {} workers", size);
 
         let (sender, receiver) = mpsc::channel();
 

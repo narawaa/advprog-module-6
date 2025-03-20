@@ -33,3 +33,7 @@ Saat mengakses 127.0.0.1/sleep, server menunggu 5 detik sebelum merespons karena
 ### Reflection 5: Milestone 5
 
 ThreadPool bekerja dengan membuat sejumlah thread worker yang siap menangani tugas. Saat ada tugas baru, tugas tersebut dikirim melalui channel ke salah satu worker yang tersedia. Worker mengambil tugas, menjalankannya, lalu kembali siap menerima tugas berikutnya. Jika ThreadPool dihentikan, semua worker akan menyelesaikan tugas yang tersisa sebelum ditutup. Ini membantu menjalankan banyak tugas secara paralel tanpa harus membuat thread baru setiap kali ada tugas.
+
+### Bonus
+
+Menggunakan build sebagai pengganti new agar fungsi lebih deskriptif dan menunjukkan bahwa kita sedang membangun objek ThreadPool. Dilakukan juga validasi agar ukuran thread pool tidak nol, yang bisa menyebabkan error saat dijalankan. Dengan menambahkan pesan log saat pembuatan thread pool, kita bisa memahami lebih jelas kapan dan bagaimana worker threads dibuat.
